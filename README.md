@@ -9,7 +9,7 @@ help(ir.DH)
 ```
 
 - representative functions 
-DH Paramter, Jacobian, Manipulator Statics, Manipulator Dynamics (Equation of Motion)
+DH Paramter, Jacobian, Manipulator Statics, Manipulator Dynamics (Newton-Euler & Lagrangian)
 
 - How to learn :
 Try the included examples 1 to 4 on the Python Jupiter Notebook.
