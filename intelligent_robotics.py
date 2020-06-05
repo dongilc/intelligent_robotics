@@ -1,6 +1,6 @@
 # Intelligent Robotics Python Library, BSD License.
-# Written by 최동일, 명지대학교 기계공학과 조교수. dongilc@mju.ac.kr
-# Theoretical Background : 지능형 로봇공학 / 문승빈, 고경철, 곽관웅, 강병훈, 이순걸, 김종형 지음 / 사이텍미디어
+# Written by Dongil Choi, MyongJi University, South Korea. dongilc@mju.ac.kr
+# Theoretical Background (Textbook) : 지능형 로봇공학 / 문승빈, 고경철, 곽관웅, 강병훈, 이순걸, 김종형 지음 / 사이텍미디어
 # Symbolic Calculation Functions : DH Parameter, Jacobian, Statics, Dynamics (Newton-Euler & Lagrangian)
 # 2020 / 06 / 04
 # How to use : 
