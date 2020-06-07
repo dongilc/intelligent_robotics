@@ -8,7 +8,7 @@ dir(ir)
 help(ir.DH)
 ```
 
-- representative functions 
+- representative functions : 
 DH Paramter, Jacobian, Manipulator Statics, Manipulator Dynamics (Newton-Euler & Lagrangian)
 
 - How to learn :
