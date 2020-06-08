@@ -2,7 +2,7 @@
 # Written by Dongil Choi, MyongJi University, South Korea. dongilc@mju.ac.kr
 # Theoretical Background (Textbook) : 지능형 로봇공학 / 문승빈, 고경철, 곽관웅, 강병훈, 이순걸, 김종형 지음 / 사이텍미디어
 # Symbolic Calculation Functions : DH Parameter, Jacobian, Statics, Dynamics (Newton-Euler & Lagrangian)
-# 2020 / 06 / 04
+# 2020 / 06 / 08
 # How to use : 
 #       import intelligent_robotics as ir
 #       dir(ir)
@@ -276,3 +276,24 @@ def get_EoM_from_T(tau,qdd,g):
     C = sympy.simplify(tau - M@qdd - G*g);
     
     return sympy.simplify(M), sympy.simplify(C), sympy.simplify(G*g)
+
+###### 동역학 : C term을 M term으로 부터 구하는 방법
+# Christoffel Symbol (Gamma)
+# C(q,qd) = qd^T * Gamma(q) * qd^T 
+# Gammga_ijk(q) = 1/2 * (round_m_ij/round_q_k + round_m_ik/round_q_j - round_m_jk/round_q_i)
+def get_Christoffel_term(M,q,qd):
+    n = len(qd);
+    C = sympy.zeros(n,1);
+    Gamma = [];
+    for i in range(n):
+        Gamma_i = sympy.zeros(n,n);
+        for j in range(n):
+            for k in range(n):
+                Gamma_i[j,k] = 1/2*(sympy.diff(M[i,j],q[k]) + sympy.diff(M[i,k],q[j]) - sympy.diff(M[j,k],q[i]));
+        Gamma.append(Gamma_i);
+        
+    for i in range(n):
+        Gamma_i = Gamma[i];
+        C[i] = sympy.simplify(qd.T@Gamma_i@qd);
+        
+    return Gamma, C
