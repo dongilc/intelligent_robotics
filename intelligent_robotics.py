@@ -279,7 +279,7 @@ def get_EoM_from_T(tau,qdd,g):
 
 ###### 동역학 : C term을 M term으로 부터 구하는 방법
 # Christoffel Symbol (Gamma)
-# C(q,qd) = qd^T * Gamma(q) * qd^T 
+# C(q,qd) = qd^T * Gamma(q) * qd 
 # Gammga_ijk(q) = 1/2 * (round_m_ij/round_q_k + round_m_ik/round_q_j - round_m_jk/round_q_i)
 def get_Christoffel_term(M,q,qd):
     n = len(qd);
