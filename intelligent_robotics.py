@@ -59,7 +59,7 @@ def get_Jacobian_from_vel(w_0_n,v_0_n,qd):
         j_i.append(sympy.simplify(sympy.diff(w_0_n,qd_i)));
         J[:,i] = sympy.Matrix(j_i);
         i+=1;
-    return J
+    return sympy.simplify(J)
 
 ###### 자코비안
 # 힘과 토크를 입력으로 받아 자코비안 T 을 구하는 함수
@@ -71,7 +71,7 @@ def get_Jacobian_from_ft(f,n):
         jt_i.append(sympy.simplify(sympy.diff(n,f_i)));
         Jt[:,i] = sympy.Matrix(jt_i);
         i+=1;
-    return Jt
+    return sympy.simplify(Jt)
 
 ###### 정역학
 # 정역학 - 힘 구하는 공식
