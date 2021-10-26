@@ -2,7 +2,7 @@
 # Written by Dongil Choi, MyongJi University, South Korea. dongilc@mju.ac.kr
 # Theoretical Background (Textbook) : 지능형 로봇공학 / 문승빈, 고경철, 곽관웅, 강병훈, 이순걸, 김종형 지음 / 사이텍미디어
 # Symbolic Calculation Functions : DH Parameter, Jacobian, Statics, Dynamics (Newton-Euler & Lagrangian)
-# 2020 / 06 / 08
+# 2021 / 10 / 27
 # How to use : 
 #       import intelligent_robotics as ir
 #       dir(ir)
@@ -13,7 +13,132 @@ from sympy.physics.vector import dynamicsymbols
 from sympy.physics.vector import time_derivative
 from sympy.physics.vector import ReferenceFrame
 N = ReferenceFrame('N')
-import math, numpy
+
+###### 회전행렬 계산, numpy 이용
+# X-축으로 DEG 각도로 회전
+def rot_x_rad(angle_rad):
+    from numpy import array, cos, sin
+    
+    rot = array([ [1, 0, 0],
+                  [0, cos(angle_rad), -sin(angle_rad)],
+                  [0, sin(angle_rad), cos(angle_rad)] ])
+    return rot
+
+###### 회전행렬 계산, numpy 이용
+# Y-축으로 DEG 각도로 회전
+def rot_y_rad(angle_rad):
+    from numpy import array, cos, sin
+    
+    rot = array([ [cos(angle_rad), 0, sin(angle_rad)],
+                  [0, 1, 0],
+                  [-sin(angle_rad), 0, cos(angle_rad)] ])
+    return rot
+
+###### 회전행렬 계산, numpy 이용
+# Z-축으로 DEG 각도로 회전
+def rot_z_rad(angle_rad):
+    from numpy import array, cos, sin
+    
+    rot = array([ [cos(angle_rad), -sin(angle_rad), 0],
+                  [sin(angle_rad), cos(angle_rad), 0],
+                  [0, 0, 1] ])
+    return rot
+
+###### 회전행렬 계산, numpy 이용
+# X-축으로 DEG 각도로 회전
+def rot_x_deg(angle_deg):
+    from numpy import array, pi, cos, sin
+    
+    DEG2RAD = pi/180
+    angle_rad = DEG2RAD*angle_deg
+    
+    rot = array([ [1, 0, 0],
+                  [0, cos(angle_rad), -sin(angle_rad)],
+                  [0, sin(angle_rad), cos(angle_rad)] ])
+    return rot
+
+###### 회전행렬 계산, numpy 이용
+# Y-축으로 DEG 각도로 회전
+def rot_y_deg(angle_deg):
+    from numpy import array, pi, cos, sin
+    
+    DEG2RAD = pi/180
+    angle_rad = DEG2RAD*angle_deg
+    
+    rot = array([ [cos(angle_rad), 0, sin(angle_rad)],
+                  [0, 1, 0],
+                  [-sin(angle_rad), 0, cos(angle_rad)] ])
+    return rot
+
+###### 회전행렬 계산, numpy 이용
+# Z-축으로 DEG 각도로 회전
+def rot_z_deg(angle_deg):
+    from numpy import array, pi, cos, sin
+    
+    DEG2RAD = pi/180
+    angle_rad = DEG2RAD*angle_deg
+    
+    rot = array([ [cos(angle_rad), -sin(angle_rad), 0],
+                  [sin(angle_rad), cos(angle_rad), 0],
+                  [0, 0, 1] ])
+    return rot
+
+###### 회전행렬 sympy 이용
+# SO3 Rotation Matrix 만드는 함수 - X축 회전, 입력은 RADIAN 값으로
+def Rot_X_SO3(angle_rad):
+    rot_martix = sympy.Matrix([[1,0,0],
+                        [0,sympy.cos(angle_rad),-sympy.sin(angle_rad)],
+                        [0,sympy.sin(angle_rad),sympy.cos(angle_rad)]]);
+    return rot_martix
+# SO3 Rotation Matrix 만드는 함수 - Y축 회전, 입력은 RADIAN 값으로
+def Rot_Y_SO3(angle_rad):
+    rot_martix = sympy.Matrix([[sympy.cos(angle_rad),0,sympy.sin(angle_rad)],
+                               [0,1,0],
+                               [-sympy.sin(angle_rad),0,sympy.cos(angle_rad)]]);
+    return rot_martix
+# SO3 Rotation Matrix 만드는 함수 - Z축 회전, 입력은 RADIAN 값으로
+def Rot_Z_SO3(angle_rad):
+    rot_martix = sympy.Matrix([[sympy.cos(angle_rad),-sympy.sin(angle_rad),0],
+                               [sympy.sin(angle_rad),sympy.cos(angle_rad),0],
+                               [0,0,1]]);
+    return rot_martix
+
+# SE3 Rotation Matrix 만드는 함수 - X축 회전, 입력은 RADIAN 값으로
+def Rot_X_SE3(angle_rad):
+    rot_martix = sympy.Matrix([[1,0,0,0],
+                               [0,sympy.cos(angle_rad),-sympy.sin(angle_rad),0],
+                               [0,sympy.sin(angle_rad),sympy.cos(angle_rad),0],
+                               [0,0,0,1]]);
+    return rot_martix
+# SE3 Rotation Matrix 만드는 함수 - Y축 회전, 입력은 RADIAN 값으로
+def Rot_Y_SE3(angle_rad):
+    rot_martix = sympy.Matrix([[sympy.cos(angle_rad),0,sympy.sin(angle_rad),0],
+                               [0,1,0,0],
+                               [-sympy.sin(angle_rad),0,sympy.cos(angle_rad),0],
+                               [0,0,0,1]]);
+    return rot_martix
+# SE3 Rotation Matrix 만드는 함수 - Z축 회전, 입력은 RADIAN 값으로
+def Rot_Z_SE3(angle_rad):
+    rot_martix = sympy.Matrix([[sympy.cos(angle_rad),-sympy.sin(angle_rad),0,0],
+                               [sympy.sin(angle_rad),sympy.cos(angle_rad),0,0],
+                               [0,0,1,0],
+                               [0,0,0,1]]);
+    return rot_martix
+
+# SE3 Translation Matrix 만드는 함수 - X축 이동
+def Transl_SE3(x,y,z):
+    transl_martix = sympy.Matrix([[1,0,0,x],
+                                  [0,1,0,y],
+                                  [0,0,1,z],
+                                  [0,0,0,1]]);
+    return transl_martix
+
+###### 동차변환
+# Rotation Matrix와 Position을 이용해 Homogeneous Transformation Matrix 만드는 함수
+def get_T_from_Rp(R,p):
+    T_temp = R.col_insert(3,p)
+    T = T_temp.row_insert(4,sympy.Matrix([[0,0,0,1]]))
+    return T
 
 ###### 동차변환
 # DH 파라미터를 이용해 Homogeneous Transformation Matrix 만드는 함수
@@ -48,6 +173,123 @@ def get_R_from_T(T):
 def get_P_from_T(T):
     P = T[0:3,3];
     return P
+
+###### 동차변환
+# 동차변환행렬의 역행렬을 구하는 함수
+def get_Inv_of_T(T):
+    R = get_R_from_T(T)
+    R_transpose = R.transpose();
+    p = get_P_from_T(T)
+    n_R_transpose_p = -R_transpose@p
+    T_temp = R_transpose.col_insert(3,n_R_transpose_p)
+    T = T_temp.row_insert(4,sympy.Matrix([[0,0,0,1]]))
+    return T
+
+##### 좌표축을 그래프로 그려서 보여주는 함수
+from matplotlib import pyplot as plt
+from matplotlib.patches import FancyArrowPatch
+from mpl_toolkits.mplot3d import proj3d
+import numpy as np
+
+conv2Rad = lambda x : x*np.pi/180
+
+class Arrow3D(FancyArrowPatch):
+    def __init__(self, xs, ys, zs, *args, **kwargs):
+        FancyArrowPatch.__init__(self, (0,0), (0,0), *args, **kwargs)
+        self._verts3d = xs, ys, zs
+
+    def draw(self, renderer):
+        xs3d, ys3d, zs3d = self._verts3d
+        xs, ys, zs = proj3d.proj_transform(xs3d, ys3d, zs3d, renderer.M)
+        self.set_positions((xs[0],ys[0]),(xs[1],ys[1]))
+        FancyArrowPatch.draw(self, renderer)
+
+def drawVector(fig, pointA, pointB, **kwargs):
+	ms = kwargs.get('mutation_scale', 20)
+	ars = kwargs.get('arrowstyle', '-|>')
+	lc = kwargs.get('lineColor', 'k')
+	pc = kwargs.get('projColor', 'k')
+	pointEnable = kwargs.get('pointEnable', True)
+	projOn = kwargs.get('proj', True)
+
+	if pointA.size == 3:
+		xs = [pointA[0], pointB[0]]
+		ys = [pointA[1], pointB[1]]
+		zs = [pointA[2], pointB[2]]
+	else:
+		xs = [pointA[0,3], pointB[0,3]]
+		ys = [pointA[1,3], pointB[1,3]]
+		zs = [pointA[2,3], pointB[2,3]]
+
+	out = Arrow3D(xs, ys, zs, mutation_scale=ms, arrowstyle=ars, color=lc)
+	fig.add_artist(out)
+
+	if pointEnable: fig.scatter(xs[1], ys[1], zs[1], color='k', s=50)
+	if projOn==True:
+		fig.plot(xs, ys, [0, 0], color=pc, linestyle='--')
+		fig.plot([xs[0], xs[0]], [ys[0], ys[0]], [0, zs[0]], color=pc, linestyle='--')
+		fig.plot([xs[1], xs[1]], [ys[1], ys[1]], [0, zs[1]], color=pc, linestyle='--')
+		
+def drawPointWithAxis(fig, *args, **kwargs):
+	ms = kwargs.get('mutation_scale', 20)
+	ars = kwargs.get('arrowstyle', '->')
+	pointEnable = kwargs.get('pointEnable', True)
+	axisEnable = kwargs.get('axisEnable', True)
+
+	if len(args) == 4:
+		ORG = args[0]
+		hat_X = args[1]
+		hat_Y = args[2]
+		hat_Z = args[3]
+		xs_n = [ORG[0], ORG[0] + hat_X[0]]
+		ys_n = [ORG[1], ORG[1] + hat_X[1]]
+		zs_n = [ORG[2], ORG[2] + hat_X[2]]
+		xs_o = [ORG[0], ORG[0] + hat_Y[0]]
+		ys_o = [ORG[1], ORG[1] + hat_Y[1]]
+		zs_o = [ORG[2], ORG[2] + hat_Y[2]]
+		xs_a = [ORG[0], ORG[0] + hat_Z[0]]
+		ys_a = [ORG[1], ORG[1] + hat_Z[1]]
+		zs_a = [ORG[2], ORG[2] + hat_Z[2]]
+	else:
+		tmp = args[0]
+		ORG = tmp[:3,3:]
+		hat_X = tmp[:3,0:1]
+		hat_Y = tmp[:3,1:2]
+		hat_Z = tmp[:3,2:3]
+		xs_n = [ORG[0, 0], ORG[0, 0] + hat_X[0, 0]]
+		ys_n = [ORG[1, 0], ORG[1, 0] + hat_X[1, 0]]
+		zs_n = [ORG[2, 0], ORG[2, 0] + hat_X[2, 0]]
+		xs_o = [ORG[0, 0], ORG[0, 0] + hat_Y[0, 0]]
+		ys_o = [ORG[1, 0], ORG[1, 0] + hat_Y[1, 0]]
+		zs_o = [ORG[2, 0], ORG[2, 0] + hat_Y[2, 0]]
+		xs_a = [ORG[0, 0], ORG[0, 0] + hat_Z[0, 0]]
+		ys_a = [ORG[1, 0], ORG[1, 0] + hat_Z[1, 0]]
+		zs_a = [ORG[2, 0], ORG[2, 0] + hat_Z[2, 0]]
+
+	if pointEnable: fig.scatter(xs_n[0], ys_n[0], zs_n[0], color='k', s=50)
+
+	if axisEnable:
+		n = Arrow3D(xs_n, ys_n, zs_n, mutation_scale=ms, arrowstyle=ars, color='r')
+		o = Arrow3D(xs_o, ys_o, zs_o, mutation_scale=ms, arrowstyle=ars, color='g')
+		a = Arrow3D(xs_a, ys_a, zs_a, mutation_scale=ms, arrowstyle=ars, color='b')
+		fig.add_artist(n)
+		fig.add_artist(o)
+		fig.add_artist(a)
+
+def RotX(phi):
+    return np.array([[1, 0, 			0],
+                     [0, np.cos(phi), 	-np.sin(phi)],
+                     [0, np.sin(phi), 	np.cos(phi)]])
+
+def RotY(theta):
+    return np.array([[np.cos(theta), 	0, np.sin(theta)],
+                     [0, 				1, 0],
+                     [-np.sin(theta), 	0, np.cos(theta)]])
+
+def RotZ(psi):
+    return np.array([[np.cos(psi), 	-np.sin(psi), 	0],
+                     [np.sin(psi), 	np.cos(psi), 	0],
+                     [0, 			0, 				1]])
 
 ###### 자코비안
 # 선속도와 각속도를 입력으로 받아 자코비안을 구하는 함수
@@ -410,4 +652,4 @@ def Trapezoidal_Traj_Gen_Given_Amax_and_T(amax,T,dt):
 # 0~1범위의 trajectory를 기반으로 실질적인 Path를 생성
 def Path_Gen(start,goal,traj):
     path = start + traj*(goal-start)
-    return path   
+    return path
