@@ -275,6 +275,7 @@ def drawPointWithAxis(fig, *args, **kwargs):
 		fig.add_artist(n)
 		fig.add_artist(o)
 		fig.add_artist(a)
+		fig.text(ORG[0, 0], ORG[1, 0], ORG[2, 0], args[1], color='red')
 
 def RotX(phi):
     return np.array([[1, 0, 			0],
