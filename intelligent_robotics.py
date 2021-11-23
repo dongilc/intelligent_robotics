@@ -546,6 +546,8 @@ def get_Christoffel_term(M,q,qd):
 ##### Reference : Modern Robotics Textbook, Chapter 9. Trapezoidal Motion Profile (335 page)
 # 사다리꼴 속도 계획법 - 속도최대값과 가속도최대값을 입력으로
 def Trapezoidal_Traj_Gen_Given_Vmax_and_Amax(vmax,amax,dt):
+    import math, numpy 
+    
     v = vmax
     a = amax
     
@@ -582,6 +584,8 @@ def Trapezoidal_Traj_Gen_Given_Vmax_and_Amax(vmax,amax,dt):
 ##### 곡선계획법 Trajectory Planning
 # 사다리꼴 속도 계획법 - 속도최대값과 최종시간을 입력으로
 def Trapezoidal_Traj_Gen_Given_Vmax_and_T(vmax,T,dt):
+    import math, numpy
+    
     v = vmax
     
     if v*T > 1 and v*T <= 2:     
@@ -617,6 +621,8 @@ def Trapezoidal_Traj_Gen_Given_Vmax_and_T(vmax,T,dt):
 ##### 곡선계획법 Trajectory Planning
 # 사다리꼴 속도 계획법 - 가속도최대값과 최종시간을 입력으로
 def Trapezoidal_Traj_Gen_Given_Amax_and_T(amax,T,dt):
+    import math, numpy
+    
     a = amax
     
     if a*math.pow(T,2) >= 4:     

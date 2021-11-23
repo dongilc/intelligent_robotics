@@ -74,20 +74,22 @@ c_SetObjectPosition         = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct
 c_SetObjectParent           = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_ubyte, ct.c_int32)(("simxSetObjectParent", libsimx))
 c_SetUIButtonLabel          = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_char), ct.c_int32)(("simxSetUIButtonLabel", libsimx))
 c_GetLastErrors             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_int32), ct.POINTER(ct.POINTER(ct.c_char)), ct.c_int32)(("simxGetLastErrors", libsimx))
-c_GetArrayParameter         = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxGetArrayParameter", libsimx))
-c_SetArrayParameter         = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxSetArrayParameter", libsimx))
-c_GetBooleanParameter       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_ubyte), ct.c_int32)(("simxGetBooleanParameter", libsimx))
-c_SetBooleanParameter       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_ubyte, ct.c_int32)(("simxSetBooleanParameter", libsimx))
-c_GetIntegerParameter       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetIntegerParameter", libsimx))
-c_SetIntegerParameter       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32)(("simxSetIntegerParameter", libsimx))
-c_GetFloatingParameter      = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxGetFloatingParameter", libsimx))
-c_SetFloatingParameter      = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_float, ct.c_int32)(("simxSetFloatingParameter", libsimx))
-c_GetStringParameter        = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.POINTER(ct.c_char)), ct.c_int32)(("simxGetStringParameter", libsimx))
+c_GetArrayParam             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxGetArrayParam", libsimx))
+c_SetArrayParam             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxSetArrayParam", libsimx))
+c_GetBoolParam              = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_ubyte), ct.c_int32)(("simxGetBoolParam", libsimx))
+c_SetBoolParam              = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_ubyte, ct.c_int32)(("simxSetBoolParam", libsimx))
+c_GetInt32Param             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetInt32Param", libsimx))
+c_SetInt32Param             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32)(("simxSetInt32Param", libsimx))
+c_GetFloatParam             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxGetFloatParam", libsimx))
+c_SetFloatParam             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_float, ct.c_int32)(("simxSetFloatParam", libsimx))
+c_GetStringParam            = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.POINTER(ct.c_char)), ct.c_int32)(("simxGetStringParam", libsimx))
 c_GetCollisionHandle        = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetCollisionHandle", libsimx))
 c_GetDistanceHandle         = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetDistanceHandle", libsimx))
 c_GetCollectionHandle       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetCollectionHandle", libsimx))
 c_ReadCollision             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_ubyte), ct.c_int32)(("simxReadCollision", libsimx))
 c_ReadDistance              = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxReadDistance", libsimx))
+c_CheckCollision            = ct.CFUNCTYPE(ct.c_int32,ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_ubyte), ct.c_int32)(("simxCheckCollision", libsimx))
+c_CheckDistance             = ct.CFUNCTYPE(ct.c_int32,ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxCheckDistance", libsimx))
 c_RemoveObject              = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32)(("simxRemoveObject", libsimx))
 c_RemoveModel               = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32)(("simxRemoveModel", libsimx))
 c_RemoveUI                  = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32)(("simxRemoveUI", libsimx))
@@ -111,10 +113,10 @@ c_SetIntegerSignal          = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.
 c_SetStringSignal           = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_ubyte), ct.c_int32, ct.c_int32)(("simxSetStringSignal", libsimx))
 c_AppendStringSignal        = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_ubyte), ct.c_int32, ct.c_int32)(("simxAppendStringSignal", libsimx))
 c_WriteStringStream         = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.POINTER(ct.c_char), ct.POINTER(ct.c_ubyte), ct.c_int32, ct.c_int32)(("simxWriteStringStream", libsimx))
-c_GetObjectFloatParameter   = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxGetObjectFloatParameter", libsimx))
-c_SetObjectFloatParameter   = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_float, ct.c_int32)(("simxSetObjectFloatParameter", libsimx))
-c_GetObjectIntParameter     = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetObjectIntParameter", libsimx))
-c_SetObjectIntParameter     = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32)(("simxSetObjectIntParameter", libsimx))
+c_GetObjectFloatParam       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.POINTER(ct.c_float), ct.c_int32)(("simxGetObjectFloatParam", libsimx))
+c_SetObjectFloatParam       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_float, ct.c_int32)(("simxSetObjectFloatParam", libsimx))
+c_GetObjectInt32Param       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetObjectInt32Param", libsimx))
+c_SetObjectInt32Param       = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32)(("simxSetObjectInt32Param", libsimx))
 c_GetModelProperty          = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.POINTER(ct.c_int32), ct.c_int32)(("simxGetModelProperty", libsimx))
 c_SetModelProperty          = ct.CFUNCTYPE(ct.c_int32,ct.c_int32, ct.c_int32, ct.c_int32, ct.c_int32)(("simxSetModelProperty", libsimx))
 c_Start                     = ct.CFUNCTYPE(ct.c_int32,ct.POINTER(ct.c_char), ct.c_int32, ct.c_ubyte, ct.c_ubyte, ct.c_int32, ct.c_int32)(("simxStart", libsimx))
@@ -630,75 +632,102 @@ def simxGetLastErrors(clientID, operationMode):
     return ret, errors
 
 def simxGetArrayParameter(clientID, paramIdentifier, operationMode):
+    return simxGetArrayParam(clientID, paramIdentifier, operationMode)
+
+def simxGetArrayParam(clientID, paramIdentifier, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
     paramValues = (ct.c_float*3)()
-    ret = c_GetArrayParameter(clientID, paramIdentifier, paramValues, operationMode)
+    ret = c_GetArrayParam(clientID, paramIdentifier, paramValues, operationMode)
     arr = []
     for i in range(3):
         arr.append(paramValues[i])
     return ret, arr
 
 def simxSetArrayParameter(clientID, paramIdentifier, paramValues, operationMode):
+    return simxSetArrayParam(clientID, paramIdentifier, paramValues, operationMode)
+
+def simxSetArrayParam(clientID, paramIdentifier, paramValues, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
     c_paramValues = (ct.c_float*3)(*paramValues)
-    return c_SetArrayParameter(clientID, paramIdentifier, c_paramValues, operationMode)
+    return c_SetArrayParam(clientID, paramIdentifier, c_paramValues, operationMode)
 
 def simxGetBooleanParameter(clientID, paramIdentifier, operationMode):
+    return simxGetBoolParam(clientID, paramIdentifier, operationMode)
+    
+def simxGetBoolParam(clientID, paramIdentifier, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
     paramValue = ct.c_ubyte()
-    return c_GetBooleanParameter(clientID, paramIdentifier, ct.byref(paramValue), operationMode), bool(paramValue.value!=0)
+    return c_GetBoolParam(clientID, paramIdentifier, ct.byref(paramValue), operationMode), bool(paramValue.value!=0)
 
 def simxSetBooleanParameter(clientID, paramIdentifier, paramValue, operationMode):
+    return simxSetBoolParam(clientID, paramIdentifier, paramValue, operationMode)
+
+def simxSetBoolParam(clientID, paramIdentifier, paramValue, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
-    return c_SetBooleanParameter(clientID, paramIdentifier, paramValue, operationMode)
+    return c_SetBoolParam(clientID, paramIdentifier, paramValue, operationMode)
 
 def simxGetIntegerParameter(clientID, paramIdentifier, operationMode):
+    return simxGetInt32Param(clientID, paramIdentifier, operationMode)
+
+def simxGetInt32Param(clientID, paramIdentifier, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
     paramValue = ct.c_int()
-    return c_GetIntegerParameter(clientID, paramIdentifier, ct.byref(paramValue), operationMode), paramValue.value
+    return c_GetInt32Param(clientID, paramIdentifier, ct.byref(paramValue), operationMode), paramValue.value
 
 def simxSetIntegerParameter(clientID, paramIdentifier, paramValue, operationMode):
+    return simxSetInt32Param(clientID, paramIdentifier, paramValue, operationMode)
+
+def simxSetInt32Param(clientID, paramIdentifier, paramValue, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
-    return c_SetIntegerParameter(clientID, paramIdentifier, paramValue, operationMode)
+    return c_SetInt32Param(clientID, paramIdentifier, paramValue, operationMode)
 
 def simxGetFloatingParameter(clientID, paramIdentifier, operationMode):
+    return simxGetFloatParam(clientID, paramIdentifier, operationMode)
+
+def simxGetFloatParam(clientID, paramIdentifier, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
     paramValue = ct.c_float()
-    return c_GetFloatingParameter(clientID, paramIdentifier, ct.byref(paramValue), operationMode), paramValue.value
+    return c_GetFloatParam(clientID, paramIdentifier, ct.byref(paramValue), operationMode), paramValue.value
 
 def simxSetFloatingParameter(clientID, paramIdentifier, paramValue, operationMode):
+    return simxSetFloatParam(clientID, paramIdentifier, paramValue, operationMode)
+
+def simxSetFloatParam(clientID, paramIdentifier, paramValue, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
-    return c_SetFloatingParameter(clientID, paramIdentifier, paramValue, operationMode)
+    return c_SetFloatParam(clientID, paramIdentifier, paramValue, operationMode)
 
 def simxGetStringParameter(clientID, paramIdentifier, operationMode):
+    return simxGetStringParam(clientID, paramIdentifier, operationMode)
+
+def simxGetStringParam(clientID, paramIdentifier, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
     paramValue = ct.POINTER(ct.c_char)()
-    ret = c_GetStringParameter(clientID, paramIdentifier, ct.byref(paramValue), operationMode)
+    ret = c_GetStringParam(clientID, paramIdentifier, ct.byref(paramValue), operationMode)
 
     a = bytearray()
     if ret == 0:
@@ -759,6 +788,21 @@ def simxReadDistance(clientID, distanceObjectHandle, operationMode):
 
     minimumDistance = ct.c_float()
     return c_ReadDistance(clientID, distanceObjectHandle, ct.byref(minimumDistance), operationMode), minimumDistance.value
+
+def simxCheckCollision(clientID, entity1,entity2, operationMode):
+    '''
+    Please have a look at the function description/documentation in the CoppeliaSim user manual
+    '''
+    collisionState = ct.c_ubyte()
+    return c_CheckCollision(clientID, entity1,entity2, ct.byref(collisionState), operationMode), bool(collisionState.value!=0)
+
+def simxCheckDistance(clientID, entity1,entity2, operationMode):
+    '''
+    Please have a look at the function description/documentation in the CoppeliaSim user manual
+    '''
+
+    minimumDistance = ct.c_float()
+    return c_CheckDistance(clientID, entity1,entity2, ct.byref(minimumDistance), operationMode), minimumDistance.value
 
 def simxRemoveObject(clientID, objectHandle, operationMode):
     '''
@@ -1105,34 +1149,46 @@ def simxWriteStringStream(clientID, signalName, signalValue, operationMode):
     return c_WriteStringStream(clientID, signalName, sigV, len(signalValue), operationMode)
 
 def simxGetObjectFloatParameter(clientID, objectHandle, parameterID, operationMode):
+    return simxGetObjectFloatParam(clientID, objectHandle, parameterID, operationMode)
+
+def simxGetObjectFloatParam(clientID, objectHandle, parameterID, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
     parameterValue = ct.c_float()
-    return c_GetObjectFloatParameter(clientID, objectHandle, parameterID, ct.byref(parameterValue), operationMode), parameterValue.value
+    return c_GetObjectFloatParam(clientID, objectHandle, parameterID, ct.byref(parameterValue), operationMode), parameterValue.value
 
 def simxSetObjectFloatParameter(clientID, objectHandle, parameterID, parameterValue, operationMode):
+    return simxSetObjectFloatParam(clientID, objectHandle, parameterID, parameterValue, operationMode)
+
+def simxSetObjectFloatParam(clientID, objectHandle, parameterID, parameterValue, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
-    return c_SetObjectFloatParameter(clientID, objectHandle, parameterID, parameterValue, operationMode)
+    return c_SetObjectFloatParam(clientID, objectHandle, parameterID, parameterValue, operationMode)
 
 def simxGetObjectIntParameter(clientID, objectHandle, parameterID, operationMode):
+    return simxGetObjectInt32Param(clientID, objectHandle, parameterID, operationMode)
+
+def simxGetObjectInt32Param(clientID, objectHandle, parameterID, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
     parameterValue = ct.c_int()
-    return c_GetObjectIntParameter(clientID, objectHandle, parameterID, ct.byref(parameterValue), operationMode), parameterValue.value
+    return c_GetObjectInt32Param(clientID, objectHandle, parameterID, ct.byref(parameterValue), operationMode), parameterValue.value
 
 def simxSetObjectIntParameter(clientID, objectHandle, parameterID, parameterValue, operationMode):
+    return simxSetObjectInt32Param(clientID, objectHandle, parameterID, parameterValue, operationMode)
+
+def simxSetObjectInt32Param(clientID, objectHandle, parameterID, parameterValue, operationMode):
     '''
     Please have a look at the function description/documentation in the CoppeliaSim user manual
     '''
 
-    return c_SetObjectIntParameter(clientID, objectHandle, parameterID, parameterValue, operationMode)
+    return c_SetObjectInt32Param(clientID, objectHandle, parameterID, parameterValue, operationMode)
 
 def simxGetModelProperty(clientID, objectHandle, operationMode):
     '''
